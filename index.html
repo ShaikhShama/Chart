@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<title>Chart</title>
+</head>
+<body>
+	<div class="container" style="position: relative; height:40vh; width:50vw; line-height: 70vw">
+		<canvas id="myChart"></canvas>
+	</div>
+
+  <canvas id="myChart" ></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+
+//Global Options
+Chart.defaults.global.defaultFontFamily = 'Lato';
+Chart.defaults.global.defaultFontSize = 15;
+Chart.defaults.global.defaultFontColor = '#999999';
+Chart.defaults.global.elements.line.fill = true;
+
+var myCharts = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Jul 2020' , 'Aug 2020', ' Sep 2020', 'Oct 2020'],
+        datasets: [{
+            label: 'Investment Value',
+            data: [
+            50000,
+            50380,
+            50780,
+            51150
+            ],
+            backgroundColor: 'transparent',
+            borderWidth: 2
+
+        }]
+    },
+    options: {
+        legend: {
+            display: true,
+            fontColor: 'red',
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                  suggestedMin: 50000,
+                  suggestedMax: 51200,
+                  callback: function(value, index, values) {
+                        return '$' + value.toLocaleString();;
+                    }
+                },
+            }]
+
+
+        }
+    }
+});
+myChart.aspectRatio = 0;
+</script>
+</body>
+</html>
